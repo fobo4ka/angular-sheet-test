@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href='bootstrap/css/bootstrap.min.css' type='text/css' media='all'>
+        <link href="css/styles.css" rel="stylesheet">
+        <title>Index</title>
+
+        <script src="js/angular.min.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/MainController.js"></script>
+
+    </head>
+    <body ng-app="myApp">
+        <div class="content" ng-controller="MainController">
+            <div class="input-rows">
+                <label for="row">Введите количество строк</label>
+                <input class="input" type="number" id="input-row" ng-model="rows" ng-focus="rows=''">
+                <button class="btn btn-secondary" ng-click="buildTable()">Построить</button>
+            </div>
+            <div class="input-str">
+                <label for="text">Введите текст</label>
+                <input class="input" type="text" id="input-text" ng-model="text" ng-focus="text=''">
+            </div>
+            <p class="error" ng-show="errorRow">Число строк должно быть больше 0</p>
+            <p class="error" ng-show="errorText">Введите текст для вставки</p>
+            <div class="table-wrapper" >
+                <table class="table" ng-mousemove="checkDropdown($event)"
+                       ng-mouseenter="checkDropdown($event)" ng-mouseout="checkDropdown($event)">
+                    <thead>
+                        <tr>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="row in table">
+                            <td ng-repeat="cell in row" class="cell" data-cell={{cell.id}}>{{cell.value}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="dropdown-menu dropdown-show" ng-show="dropdownIsShow" ng-mouseout="checkDropdown($event)">
+                    <a class="dropdown-item" ng-click="deleteRow()">Удалить строку таблицы</a>
+                    <a class="dropdown-item" ng-click="deleteSymbolInCell()">Удалить символ из ячейки</a>
+                    <a class="dropdown-item" ng-click="deleteSymbolInAllCell()">Удалить символ из каждой ячейки строки таблицы</a>
+                    <a class="dropdown-item" ng-click="addTextRowInCell()">Добавить текстовую строку в ячейку</a>
+                    <a class="dropdown-item" ng-click="addTextRowInTheEndOfEachCell()">Добавить текстовую строку в конец каждой ячейки</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

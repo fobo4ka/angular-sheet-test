@@ -1,0 +1,37 @@
+.content {
+	padding: 20px;
+}
+
+.table-wrapper {
+	position: relative;
+}
+
+.error {
+	color: red;
+}
+
+.input {
+	height: 37px;
+}
+
+.input-rows {
+	display: inline-block;
+	margin: 0 0 20px 0;
+}
+
+.input-str {
+	display: inline-block;
+	margin: 0 0 20px 20px;
+}
+
+.cell {
+	position: relative;
+}
+
+.dropdown-show {
+	display: block;
+}
+
+.dropdown-menu {
+	transition: all 0.3s ease-out;
+}
